@@ -71,7 +71,7 @@ locals {
   az1 = "${var.region}a"
   az2 = "${var.region}b"
 
-  Main.tf*******
+  Main.tf********************************************************************************************************************************
 
   
 ############################
@@ -429,4 +429,26 @@ resource "aws_route53_record" "alb_alias" {
     evaluate_target_health = false
   }
 }
+
+Output.tf*********************************************************************************************************
+
+output "alb_dns_name" {
+   description = "Public DNS of the ALB"
+  value       = aws_lb.web_alb.dns_name
+}
+
+output "web1_public_ip" {
+  description = "Public IP of Web Server 1"
+  value       = aws_instance.web1.public_ip
+}
+
+output "web2_public_ip" {
+  description = "Public IP of Web Server 2"
+  value       = aws_instance.web2.public_ip
+}
+
+output "rds_endpoint" {
+  description = "RDS MySQL endpoint (private)"
+  value       = aws_db_instance.mysql.address
+
 
